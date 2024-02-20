@@ -18,7 +18,6 @@ vim.g.mapleader = " "
 
 require("lazy").setup({
   { 'rose-pine/neovim', name = 'rose-pine' },
-  {'folke/tokyonight.nvim'},
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
@@ -49,6 +48,7 @@ lsp.ensure_installed({
     'clangd',
     'csharp_ls',
     'cssls',
+    'elixirls',
     'gopls',
     'html',
     'htmx',
