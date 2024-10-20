@@ -46,17 +46,8 @@ end)
 lsp.ensure_installed({
     'bashls',
     'clangd',
-    'csharp_ls',
-    'cssls',
-    'elixirls',
-    'gopls',
-    'html',
-    'htmx',
     'lua_ls',
     'pylsp',
-    'sqlls',
-    'templ',
-    'tsserver',
 })
 
 lsp.setup()
