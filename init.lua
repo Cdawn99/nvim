@@ -1,6 +1,5 @@
 require("dawn.remap")
 require("dawn.set")
-require("lspconfig.poryscript_lsp")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -18,40 +17,60 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 
 require("lazy").setup({
-  { 'rose-pine/neovim', name = 'rose-pine' },
+  {'rose-pine/neovim', name = 'rose-pine'},
+
   {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
+    "mason-org/mason-lspconfig.nvim",
+    opts = {},
     dependencies = {
-      -- LSP Support
-      {'neovim/nvim-lspconfig'},             -- Required
-      {'williamboman/mason.nvim'},           -- Optional
-      {'williamboman/mason-lspconfig.nvim'}, -- Optional
-
-      -- Autocompletion
-      {'hrsh7th/nvim-cmp'},     -- Required
-      {'hrsh7th/cmp-nvim-lsp'}, -- Required
-      {'L3MON4D3/LuaSnip'},     -- Required
-    }
+      {"mason-org/mason.nvim", opts = {}},
+      {"neovim/nvim-lspconfig"},
+    },
   }
+
+  -- {
+  --   'VonHeikemen/lsp-zero.nvim',
+  --   branch = 'v2.x',
+  --   dependencies = {
+  --     -- LSP Support
+  --     {'neovim/nvim-lspconfig'},             -- Required
+  --     {'williamboman/mason.nvim'},           -- Optional
+  --     {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+  --     -- Autocompletion
+  --     {'hrsh7th/nvim-cmp'},     -- Required
+  --     {'hrsh7th/cmp-nvim-lsp'}, -- Required
+  --     {'L3MON4D3/LuaSnip'},     -- Required
+  --   }
+  -- }
 })
 
-local lsp = require('lsp-zero').preset({})
+vim.diagnostic.config({virtual_text=true})
 
-lsp.on_attach(function(client, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp.default_keymaps({buffer = bufnr})
-end)
+vim.lsp.enable('bashls')
+vim.lsp.enable('clangd')
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('pylsp')
+vim.lsp.enable('poryscript_lsp')
+-- vim.lsp.enable('gopls')
+-- vim.lsp.enable('csharp_ls')
 
-lsp.ensure_installed({
-    'bashls',
-    'clangd',
-    'lua_ls',
-    'pylsp',
-})
-
-lsp.setup()
+-- local lsp = require('lsp-zero').preset({})
+-- 
+-- lsp.on_attach(function(client, bufnr)
+--   -- see :help lsp-zero-keybindings
+--   -- to learn the available actions
+--   lsp.default_keymaps({buffer = bufnr})
+-- end)
+-- 
+-- lsp.ensure_installed({
+--     'bashls',
+--     'clangd',
+--     'lua_ls',
+--     'pylsp',
+-- })
+-- 
+-- lsp.setup()
 
 require('rose-pine').setup({
 	--- @usage 'auto'|'main'|'moon'|'dawn'

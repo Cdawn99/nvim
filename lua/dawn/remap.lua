@@ -12,3 +12,6 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "<leader>pw", ":set wrap<CR>:set spell<CR>")
 vim.keymap.set("n", "<leader>pp", ":set nowrap<CR>:set nospell<CR>")
+
+vim.keymap.set("n", "gd", "<C-]>")
+vim.keymap.set("n", "gl", ":lua vim.diagnostic.open_float()<CR>")
